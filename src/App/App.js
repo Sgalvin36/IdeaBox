@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Ideas from '../Ideas';
+import Form from '../Form';
 
 function App() {
   const dummyIdeas = [
@@ -10,10 +11,15 @@ function App() {
 ]
   const [ideas, setIdeas] = useState([])
 
+  function addIdea (newIdea) {
+    setIdeas([...ideas, newIdea])
+  }
+
   return (
     <main className='App'>
       <h1>IdeaBox</h1>
       {!ideas.length && <h2>No ideas yet -- add some noise!</h2>}
+      <Form addIdea={addIdea}/>
       <Ideas ideas={ideas}/>
     </main>
   )
